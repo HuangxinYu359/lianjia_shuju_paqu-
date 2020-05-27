@@ -1,18 +1,21 @@
+#导包
+from bs4 import BeautifulSoup
 import requests
 import re
-from bs4 import BeautifulSoup
-import bs4
+import time
+import pandas as pd
+import json
 
 #伪造设置浏览器请求头user-agent
 #修改starturl_list即可
 head = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36'
 }
-starturl_list = ['https://cs.lianjia.com/chengjiao/changshaxian/']
+starturl_list = ['https://cs.lianjia.com/chengjiao/']
 
 #获取县级市的url
 def get_cityurls(url):
-    request = requests.get('https://cs.lianjia.com/chengjiao/changshaxian/',headers=head)
+    request = requests.get(url,headers=head)
     request.encoding = 'utf-8'
     soup = BeautifulSoup(request.text,'html.parser')
     cityurls = []
@@ -62,8 +65,7 @@ def news_ershoufang(url):
     pre_datanews = ''.join([str(i) for i in pre_data])
     # 城市
     data_all.append('长沙')
-    # 城区名字
-    data_all.append('长沙县')
+
     # 小区名字
     names = soup.select('div.house-title>div.wrapper')
     names_pre = ''.join(str(i) for i in names)
@@ -428,7 +430,7 @@ for i in data_eachurls:
     r +=1
 
 df = pd.DataFrame(alldata)
-df.columns = ['城市','城区','小区名字','房屋户型','所在楼层','建筑面积','户型结构',\
+df.columns = ['城市','小区名字','房屋户型','所在楼层','建筑面积','户型结构',\
               '套内面积','建筑类型','房屋朝向','建成年代','装修情况',\
               '建筑结构','供暖方式','梯户比例','产权年限','配备电梯',\
               '链家编号','交易权属','挂牌时间','房屋用途','房屋年限',\
