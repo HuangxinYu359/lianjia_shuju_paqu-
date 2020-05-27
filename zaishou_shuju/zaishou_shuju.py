@@ -5,6 +5,7 @@ import re
 import time
 import pandas as pd
 import json
+import time
 
 #伪造设置浏览器请求头user-agent
 head = {
@@ -362,7 +363,7 @@ def news_ershoufang(url):
 
     return data_all
 
-% % time
+
 data_pageurls = []
 a = []
 data_eachurls = []

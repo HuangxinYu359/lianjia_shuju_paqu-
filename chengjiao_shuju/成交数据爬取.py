@@ -5,6 +5,7 @@ import re
 import time
 import pandas as pd
 import json
+import time
 
 #伪造设置浏览器请求头user-agent
 #修改starturl_list即可
@@ -192,7 +193,7 @@ def news_ershoufang(url):
     # 链家编号
     numberlist = re.findall(u"链家编号</span>\d+", pre_datanews)
     if len(numberlist) == 0:
-        data_al.append('None')
+        data_all.append('None')
     else:
         numberlist_news = numberlist[0].lstrip('链家编号</span>')
         data_all.append(numberlist_news)
@@ -387,7 +388,7 @@ def news_ershoufang(url):
         data_all.append(dt_news)
     return data_all
 
-%%time
+#% %time
 data_pageurls = []
 a = []
 data_eachurls = []

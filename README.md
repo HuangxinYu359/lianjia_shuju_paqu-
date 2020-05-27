@@ -1,4 +1,4 @@
 # lianjia_shuju_paqu-
 爬取链家网的数据
-1.使用chengjiao_shuju下的爬取链家网页的代码，只需修改成相应城市的urls
-https://github.com/HuangxinYu359/lianjia_shuju_paqu-.githttps://github.com/HuangxinYu359/lianjia_shuju_paqu-.git
+1.爬取链家网成交数据时，使用chengjiao_shuju下的爬取链家网页的代码，只需修改成相应城市的urls即可；
+2.爬取链家网在售数据时，使用zaishou_shuju下的爬取链家网在售数据，只需修改相应城市的urls即可。
